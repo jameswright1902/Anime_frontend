@@ -1,15 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import { Provider } from 'react-redux';
-import {BrowserRouter} from "react-router-dom"
-import store from './store.js';
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+import Home from '../routes/home'; 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={store}>
-    <App />
-    </Provider>
-  </React.StrictMode>,
-)
+    <Router>
+      <Routes>
+        <Route path="/*" element={<Home />} /> 
+        {/* Add more routes as needed */}
+      </Routes>
+    </Router>
+  </React.StrictMode>
+);
