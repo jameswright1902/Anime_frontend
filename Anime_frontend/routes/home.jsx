@@ -1,19 +1,14 @@
-// this is the home page
-
-import React from "react";
-// change commented out code, get components from malik
-// import Header from "../components/Header";
-// import AddRestaurant from "../components/AddRestaurant";
-// import RestaurantList from "../components/RestaurantList";
+import React from 'react';
 
 const Home = () => {
   return (
     <div>
-      {/* <Header />
-      <AddRestaurant />
-      <RestaurantList /> */}
+      <h1>Welcome to My Anime</h1>
+      <p>This is the home page of my anime website.</p>
+      {/* Add more content or components as needed */}
     </div>
   );
 };
 
 export default Home;
+

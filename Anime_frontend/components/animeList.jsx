@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AnimeCard from "../components/animeCard";
+import AnimeCard from "./animeCard";
 
 const AnimeList = () => {
   const [animeList, setAnimeList] = useState([]);

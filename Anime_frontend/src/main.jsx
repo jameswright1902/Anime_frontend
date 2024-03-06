@@ -1,13 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client'; 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
-import Home from '../routes/home'; 
+import Home from '../routes/home';
+import RecommendationsPage from '../routes/recommendations';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Router>
       <Routes>
-        <Route path="/*" element={<Home />} /> 
+        <Route path="/" element={<Home />} /> 
+        <Route path="/recommendations" element={<RecommendationsPage />} /> 
+
         {/* Add more routes as needed */}
       </Routes>
     </Router>
