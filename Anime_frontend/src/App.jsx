@@ -1,12 +1,19 @@
-import axios from 'axios';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+import Home from '../routes/home';
+import RecommendationsPage from '../routes/recommendations';
 
-const fetchData = async () => {
-  try {
-    const response = await axios.get('http://localhost:3000'); // Replace with your backend endpoint URL
-    console.log(response.data); // Do something with the response data
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-};
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} /> 
+        <Route path="/recommendations" element={<RecommendationsPage />} /> 
 
-fetchData();
+        {/* Add more routes as needed */}
+      </Routes>
+    </Router>
+  )
+}
+
+export default App

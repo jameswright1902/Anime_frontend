@@ -12,33 +12,12 @@ const animeSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(
-      api.endpoints.getAnime.matchFullfilled,
+      api.endpoints.getAnime.matchFulfilled,
       (state, { payload }) => {
         return { ...state, products: payload };
       }
     );
-    builder.addMatcher(
-      anime.endpoints.getProduct.matchFulfilled,
-      (state, { payload }) => {
-        return { ...state, anime: payload };
-      }
-    );
-
-    builder.addMatcher(
-      anime.endpoints.updateProduct.matchFulfilled,
-      (state, { payload }) => {
-        console.log("hit");
-        return {
-          ...state,
-          products: state.products.map((anime) => {
-            if (anime.id === payload.anime.id) {
-              return payload.anime;
-            }
-            return anime;
-          }),
-        };
-      }
-    );
+    
   },
 });
 
