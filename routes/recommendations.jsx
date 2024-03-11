@@ -1,61 +1,99 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const RecommendationsPage = () => {
-  const [recommendations, setRecommendations] = useState([]);
-  const [pageNumber, setPageNumber] = useState(1);
+const Schedules = () => {
+  const [schedules, setSchedules] = useState({});
   const [loading, setLoading] = useState(true);
+  const [selectedAnime, setSelectedAnime] = useState(null);
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/recommendations/anime?page=${pageNumber}&limit=10`)
-      .then(response => response.json())
+    fetchAnimeSchedules()
       .then(data => {
-        console.log(data.data);
-        setRecommendations(prevRecommendations => [...prevRecommendations, ...data.data]);
+        const randomizedSchedules = randomizeSchedules(data);
+        setSchedules(randomizedSchedules);
         setLoading(false);
       })
-      .catch(error => console.error('Error fetching recommendations data:', error));
-  }, [pageNumber]);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+      .catch(error => console.error('Error fetching anime schedules:', error));
   }, []);
 
-  const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight ||
-      loading
-    ) {
-      return;
+  // Function to fetch anime schedules
+  async function fetchAnimeSchedules() {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/schedules`
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching anime schedules:", error.message);
+      throw error;
     }
-    setPageNumber(prevPageNumber => prevPageNumber + 1);
+  }
+
+  // Function to shuffle array
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
+  // Function to randomize schedules
+  const randomizeSchedules = (data) => {
+    const randomizedData = {};
+    Object.keys(data).forEach(day => {
+      randomizedData[day] = shuffleArray(data[day]);
+    });
+    return randomizedData;
+  };
+
+  // Function to handle image click and display details
+  const handleImageClick = (anime) => {
+    setSelectedAnime(anime);
   };
 
   return (
     <div>
-      <h1>Welcome to My Recommendations Page</h1>
-      <p>Here you'll find personalized recommendations tailored just for you!</p>
-      <div id="recommendation-container">
-        {recommendations.map((anime, index) => (
-          <div key={anime.id || index} className="anime-card">
-            {anime.entry.length > 0 && anime.entry[0].images && anime.entry[0].images.jpg && (
-              <img src={anime.entry[0].images.jpg.image_url} alt={anime.title} />
-            )}
-            <h2>{anime.title}</h2>
-            <p>Type: {anime.type}</p>
-            <p>Score: {anime.score}</p>
-            <p>Episodes: {anime.episodes}</p>
-            <p>{anime.title}</p> {/* Display anime title under the image */}
-
+      <h1>Anime Schedules</h1>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        Object.keys(schedules).map((day, index) => (
+          <div key={index}>
+            <h2>{day}</h2>
+            <div id={`recommendation-container-${index}`}>
+              {schedules[day] && Array.isArray(schedules[day]) ? (
+                schedules[day].map((anime, animeIndex) => (
+                  <div key={anime.id || animeIndex} className="anime-card">
+                    {anime.images && anime.images.jpg && (
+                      <img
+                        src={anime.images.jpg.image_url}
+                        alt={anime.title}
+                        onClick={() => handleImageClick(anime)}
+                      />
+                    )}
+                    <h3>{anime.title}</h3>
+                    {/* Display details only if anime is selected */}
+                    {selectedAnime === anime && (
+                      <div>
+                        <p>Status: {anime.status}</p>
+                        <p>Rating: {anime.rating}</p>
+                        <p>Rank: {anime.rank}</p>
+                        <p>Type: {anime.type}</p>
+                        <p>Episodes: {anime.episodes}</p>
+                        <p>{anime.synopsis}</p>
+                      </div>
+                    )}
+                  </div>
+                ))
+              ) : null}
+            </div>
           </div>
-        ))}
-        {loading && <p>Loading...</p>}
-      </div>
+        ))
+      )}
     </div>
   );
 };
 
-export default RecommendationsPage;
+export default Schedules ;
