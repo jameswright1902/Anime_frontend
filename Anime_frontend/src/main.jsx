@@ -11,7 +11,7 @@ createRoot(document.getElementById('root')).render(
     <Router>
       <Routes>
         <Route path="/anime" element={<Home />} />
-        <Route path="/recommendations/anime" element={<RecommendationsPage />} />
+        <Route path="/schedules" element={<RecommendationsPage />} />
         <Route path="/top/characters" element={<TopCharacters />} /> {/* Add a route for the TopCharacters component */}
         <Route path="/top/anime" element={<TopAnime />} /> {/* Add a route for the TopAnime component */}
         {/* <Route path="/anime/:id" element={<AnimeDetails />} /> Route for displaying anime details */}
