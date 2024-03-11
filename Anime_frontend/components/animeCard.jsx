@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import useGetAnimeData from "../components/allAnime";
-
+import useGetAnimeData from "./allAnime";
 
 const AnimeCard = ({ anime, addToMustWatchList }) => {
   return (
