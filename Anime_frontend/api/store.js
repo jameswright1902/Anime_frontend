@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { api } from "../api/index.js";
+import { api } from "./index.js";
 import animeReducer from "../slice/anime.js";
 
 const store = configureStore({
@@ -8,7 +8,8 @@ const store = configureStore({
 
     sets: animeReducer(),
   },
-  middleware: (getdefaultMiddleware) => getdefaultMiddleware().concat(api.middleware),
+  middleware: (getdefaultMiddleware) =>
+    getdefaultMiddleware().concat(api.middleware),
 });
 
 export default store;
