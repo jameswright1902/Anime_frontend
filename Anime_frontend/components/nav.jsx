@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         
-        <Link className="navbar-brand" to="#">Home</Link>
+        {/* <Link className="navbar-brand" to="#">Home</Link> */}
 
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -15,23 +15,26 @@ const Navbar = () => {
         
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/top/anime">Anime</Link>
+            </li>
+                
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/schedules">Schedules</Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/top/characters">Characters</Link>
+            </li>
+
+            
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="#">Register</Link>
             </li>
+
             <li className="nav-item">
               <Link className="nav-link" to="#">Sign In</Link>
-            </li>
-            
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="#">Schedules</Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="#">Characters</Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="#">Anime</Link>
             </li>
 
           </ul>
