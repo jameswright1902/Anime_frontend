@@ -7,7 +7,7 @@ import TopCharacters from "../routes/topCharcters"; // Corrected import
 import TopAnime from "../routes/topAnime"; // Corrected import
 import Navbar from "../components/nav";
 import "bootstrap/dist/css/bootstrap.css";
-import { Link } from "react-router-dom";
+
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -15,10 +15,11 @@ createRoot(document.getElementById("root")).render(
       <Navbar />
 
       <Routes>
-        <Route path="/anime" element={<Home />} />
-        <Route path="/schedules" element={<RecommendationsPage />} />
-        <Route path="/top/characters" element={<TopCharacters />} />
         <Route path="/top/anime" element={<TopAnime />} />
+        <Route path="/schedules" element={<RecommendationsPage />} />
+        <Route path="/top/characters" element={<TopCharacters />} />        
+        {/* <Route path="/anime" element={<TopAnime />} /> */}
+        
       </Routes>
     </Router>
   </React.StrictMode>
