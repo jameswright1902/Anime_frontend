@@ -9,10 +9,24 @@ const Home = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
-        setTopAnime(data.data);
+        const shuffledAnime = shuffleArray(data.data);
+        setTopAnime(shuffledAnime);
       })
       .catch((error) => console.error("Error fetching top anime data:", error));
   }, []);
+
+  // Function to shuffle an array
+  const shuffleArray = (array) => {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ];
+    }
+    return shuffledArray;
+  };
 
   const handleAnimeClick = (index) => {
     // Toggle the clicked anime index
@@ -25,8 +39,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Welcome to My Anime</h1>
-      <p>This is the home page of my anime website.</p>
+      <h1></h1>
       <div id="top-anime-container">
         {topAnime.length > 0 ? (
           topAnime.map((anime, index) => (
@@ -36,7 +49,7 @@ const Home = () => {
                 alt={anime.title}
                 onClick={() => handleAnimeClick(index)}
               />
-                  <h2>{anime.title}</h2>
+              <h2>{anime.title}</h2>
 
               {clickedAnime === index && (
                 <>
