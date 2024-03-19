@@ -8,12 +8,23 @@ const TopCharacters = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
-        setTopCharacters(data.data);
+        const shuffledCharacters = shuffleArray(data.data);
+        setTopCharacters(shuffledCharacters);
       })
       .catch((error) =>
         console.error("Error fetching top characters data:", error)
       );
   }, []);
+
+  // Function to shuffle an array
+  const shuffleArray = (array) => {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray;
+  };
 
   const [visibleAboutIndex, setVisibleAboutIndex] = useState(null);
 
@@ -23,8 +34,8 @@ const TopCharacters = () => {
 
   return (
     <div>
-      <h1>Welcome to My Top Characters Page</h1>
-      <p>Here you'll find Top Characters tailored just for you!</p>
+      <h1></h1>
+      
       <div id="top-characters-container">
         {topCharacters.length > 0 ? (
           topCharacters.map((character, index) => (

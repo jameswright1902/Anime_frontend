@@ -36,23 +36,25 @@ const RecommendationsPage = () => {
 
   return (
     <div>
-      <h1>Anime Schedules</h1>
+      <h1></h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
         Object.keys(schedules).map((day, index) => (
           <div key={index}>
-            <h2>{day}</h2>
+            {/* <h2>{day}</h2> */}
             <div id={`recommendation-container-${index}`}>
               {schedules[day] && Array.isArray(schedules[day])
                 ? schedules[day].map((anime, animeIndex) => (
                     <div key={anime.id || animeIndex} className="anime-card">
-                      {anime.images && anime.images.jpg && (
+                      {anime.images && anime.images.jpg && anime.images.jpg.image_url ? (
                         <img
-                          src={anime.images.jpg.image_url}
+                          src={anime.images.jpg.image_url} // Check if image_url is available
                           alt={anime.title}
                           onClick={() => handleImageClick(anime)}
                         />
+                      ) : (
+                        <p>No image available</p>
                       )}
                       <h3>{anime.title}</h3>
                       {/* Display details only if anime is selected */}

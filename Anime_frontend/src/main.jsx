@@ -9,7 +9,7 @@ import Navbar from "../components/nav";
 import "bootstrap/dist/css/bootstrap.css";
 import LoginForm from "../components/loginform";
 import RegistrationForm from "../components/registrationform";
-
+import "./index.css"
 
 
 
