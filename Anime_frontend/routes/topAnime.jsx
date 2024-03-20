@@ -34,8 +34,8 @@ const Home = () => {
   };
   return (
     <div>
-      <h1> AnimeMania</h1>
-      <div id="top-anime-container">
+      <h1>AnimeMania</h1>
+    <div id="top-anime-container">
         {topAnime.length > 0 ? (
           topAnime.map((anime, index) => (
             <div key={anime.id || index} className="anime-card">

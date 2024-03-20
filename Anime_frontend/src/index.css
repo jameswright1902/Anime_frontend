@@ -58,7 +58,7 @@ img,
 svg {
   vertical-align: middle;
   height: 250px;
-  padding: 10px;
+  padding: 5px;
   width: 180px;
   background-color: #130E09;
 }
@@ -75,7 +75,6 @@ div.anime-card {
   transition: transform 0.3s ease;
   background-color: #191815;
   padding: 17px;
-  /* transform: translateY(-5px); */
   padding-right: 10px;
   padding-left: 10px;
 }

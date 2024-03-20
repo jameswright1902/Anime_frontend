@@ -36,7 +36,7 @@ const RecommendationsPage = () => {
 
   return (
     <div>
-      <h1></h1>
+      <h1>Recommendations</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
