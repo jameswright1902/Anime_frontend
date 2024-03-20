@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AnimeCard from "./animeCard";
 
-const AnimeList = () => {
+  const AnimeList = () => {
   const [animeList, setAnimeList] = useState([]);
   const [mustWatchList, setMustWatchList] = useState([]);
 
