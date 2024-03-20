@@ -21,7 +21,7 @@ const RecommendationsPage = () => {
   // Function to fetch anime schedules
   async function fetchAnimeSchedules() {
     try {
-      const response = await axios.get(`http://localhost:3000/schedules`);
+      const response = await axios.get("http://localhost:3000/schedules");
       return response.data;
     } catch (error) {
       console.error("Error fetching anime schedules:", error.message);
@@ -36,7 +36,7 @@ const RecommendationsPage = () => {
 
   return (
     <div>
-      <h1>Recommendations</h1>
+      <h1>Recommendations:</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
