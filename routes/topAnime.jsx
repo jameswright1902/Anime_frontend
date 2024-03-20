@@ -1,16 +1,25 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios"
+
+
 const Home = () => {
   const [topAnime, setTopAnime] = useState([]);
   const [clickedAnime, setClickedAnime] = useState(null);
+
+  
   useEffect(() => {
-    fetch("http://localhost:3000/top/anime")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.data);
-        const shuffledAnime = shuffleArray(data.data);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/top/anime");
+        console.log(response.data.data);
+        const shuffledAnime = shuffleArray(response.data.data);
         setTopAnime(shuffledAnime);
-      })
-      .catch((error) => console.error("Error fetching top anime data:", error));
+      } catch (error) {
+        console.error("Error fetching top anime data:", error);
+      }
+    };
+
+    fetchData();
   }, []);
   // Function to shuffle an array
   const shuffleArray = (array) => {
