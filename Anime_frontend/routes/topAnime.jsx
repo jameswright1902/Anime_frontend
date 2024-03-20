@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-
 const Home = () => {
   const [topAnime, setTopAnime] = useState([]);
   const [clickedAnime, setClickedAnime] = useState(null);
-
   useEffect(() => {
     fetch("http://localhost:3000/top/anime")
       .then((response) => response.json())
@@ -14,7 +12,6 @@ const Home = () => {
       })
       .catch((error) => console.error("Error fetching top anime data:", error));
   }, []);
-
   // Function to shuffle an array
   const shuffleArray = (array) => {
     const shuffledArray = [...array];
@@ -27,7 +24,6 @@ const Home = () => {
     }
     return shuffledArray;
   };
-
   const handleAnimeClick = (index) => {
     // Toggle the clicked anime index
     if (clickedAnime === index) {
@@ -36,10 +32,9 @@ const Home = () => {
       setClickedAnime(index); // If not clicked, set the clicked anime index
     }
   };
-
   return (
     <div>
-      <h1></h1>
+      <h1> AnimeMania</h1>
       <div id="top-anime-container">
         {topAnime.length > 0 ? (
           topAnime.map((anime, index) => (
@@ -50,7 +45,6 @@ const Home = () => {
                 onClick={() => handleAnimeClick(index)}
               />
               <h2>{anime.title}</h2>
-
               {clickedAnime === index && (
                 <>
                   <p>Type: {anime.type}</p>
@@ -71,5 +65,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;
