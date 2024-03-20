@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -25,7 +25,7 @@ const Navbar = () => {
               <Link
                 className="nav-link active"
                 aria-current="page"
-                to="/top/anime"
+                to="/"
               >
                 Anime
               </Link>
