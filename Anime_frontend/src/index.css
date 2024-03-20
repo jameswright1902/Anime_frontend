@@ -7,7 +7,7 @@ body {
 }
 
 h1 {
-  font-size: 16px;
+  font-size: 40px;
   line-height: 1.5;
   height: 3em;
   overflow: hidden;
@@ -16,6 +16,10 @@ h1 {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   color: #f2f1f1;
+  padding: 40px;
+  font-family: fantasy;
+  margin-top: 40px;
+  
 }
 h2 {
   font-size: 16px;
@@ -27,6 +31,7 @@ h2 {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   color: #f2f1f1;
+  margin: 10px;
 }
 h3 {
   font-size: 16px;
@@ -59,9 +64,10 @@ img,
 svg {
   vertical-align: middle;
   height: 250px;
-  padding: 10px;
+  padding: 5px;
   width: 180px;
   background-color: #130e09;
+  margin: 20px;
 }
 
 div.anime-card {
@@ -71,13 +77,12 @@ div.anime-card {
   margin-bottom: 20px; /* Adjust spacing between rows */
   width: calc(18% - 20px); /* Adjust width for two columns */
   max-width: calc(25% - 20px); /* Limit the maximum width */
-  border: 3px solid #e4e4de;
-  border-radius: 8px;
+  border: 2px solid #e4e4de;
+  border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease;
   background-color: #191815;
   padding: 17px;
-  /* transform: translateY(-5px); */
   padding-right: 10px;
   padding-left: 10px;
 }
