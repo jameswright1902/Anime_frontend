@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const Home = () => {
+const TopAnime = () => {
   const [topAnime, setTopAnime] = useState([]);
   const [error, setError] = useState(null); // New state for storing error
 
@@ -18,13 +18,13 @@ const Home = () => {
         if (error.response && error.response.status === 429) {
           // If rate limited, wait for some time and retry
           // Wait for 5 seconds
-          await new Promise(resolve => setTimeout(resolve, 5000)); 
+          await new Promise((resolve) => setTimeout(resolve, 5000));
 
           // Retry fetching data
-          fetchData(); 
+          fetchData();
         } else {
           // Set other errors
-          setError(error); 
+          setError(error);
         }
       }
     };
@@ -79,4 +79,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default TopAnime;
