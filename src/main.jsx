@@ -1,13 +1,13 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import RecommendationsPage from "../routes/recommendations";
-import TopCharacters from "../routes/topCharcters"; // Corrected import
-import TopAnime from "../routes/topAnime"; // Corrected import
-import Navbar from "../components/nav";
+import RecommendationsPage from "../src/routes/recommendations";
+import TopCharacters from "../src/routes/topCharcters"; // Corrected import
+import TopAnime from "../src/routes/topAnime"; // Corrected import
+import Navbar from "../src/components/nav";
 import "bootstrap/dist/css/bootstrap.css";
-import LoginForm from "../components/loginform";
-import RegistrationForm from "../components/registrationform";
+import LoginForm from "../src/components/loginform";
+import RegistrationForm from "../src/components/registrationform";
 import "./index.css";
 
 
