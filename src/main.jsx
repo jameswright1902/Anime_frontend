@@ -16,7 +16,7 @@ createRoot(document.getElementById("root")).render(
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/top/anime" element={<TopAnime />} />
+          <Route path="/" element={<TopAnime />} />
           <Route path="/schedules" element={<RecommendationsPage />} />
           <Route path="/top/characters" element={<TopCharacters />} />
           <Route path="/login" element={<LoginForm />} />
