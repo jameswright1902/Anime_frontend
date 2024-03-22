@@ -12,7 +12,7 @@ function LoginForm() {
     e.preventDefault();
     // Simulate login logic here
     try {
-      const response = await axios.post("https://anime-demo.onrender.com/login", {
+      const response = await axios.post(`${import.meta.env.VITE_URL}/login`, {
         username,
         password,
       });

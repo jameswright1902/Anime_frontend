@@ -11,7 +11,7 @@ function RegistrationForm() {
   const handleRegistration = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://anime-demo.onrender.com/register", {
+      const response = await axios.post(`${import.meta.env.VITE_URL}/register`, {
         username,
         email,
         password,
