@@ -19,7 +19,7 @@ function LoginForm() {
   
       if (response.status === 200) { // Assuming status 200 indicates successful login
         // Redirect to top anime page after successful login
-        window.location.href = "/top/anime";
+        window.location.href = "/";
       } else {
         setError("Invalid username or password.");
       }

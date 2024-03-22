@@ -56,6 +56,22 @@ p {
   padding: 0px 0; /* Adjust padding as needed */
   z-index: 1000; /* Ensure it's above other content */
 }
+button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled) {
+  cursor: grabbing;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+  width: 85%;
+}
+.mt-5 {
+  margin-top: 3rem !important;
+  margin: 40%;
+  padding-top: 20%;
+}
+label {
+    display: inline-block;
+    color: white;
+}
 img,
 svg {
   vertical-align: middle;

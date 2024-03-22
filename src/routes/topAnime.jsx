@@ -3,28 +3,27 @@ import axios from "axios";
 
 const TopAnime = () => {
   const [topAnime, setTopAnime] = useState([]);
-  const [error, setError] = useState(null); // New state for storing error
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [selectedAnime, setSelectedAnime] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await axios.get("http://localhost:3000/top/anime");
         console.log("Response data:", response.data.data);
         const shuffledAnime = shuffleArray(response.data.data);
         setTopAnime(shuffledAnime);
+        setLoading(false);
       } catch (error) {
-        // If rate limited, wait for some time and retry
         console.error("Error fetching top anime data:", error);
         if (error.response && error.response.status === 429) {
-          // If rate limited, wait for some time and retry
-          // Wait for 5 seconds
           await new Promise((resolve) => setTimeout(resolve, 5000));
-
-          // Retry fetching data
           fetchData();
         } else {
-          // Set other errors
           setError(error);
+          setLoading(false);
         }
       }
     };
@@ -44,13 +43,10 @@ const TopAnime = () => {
     return shuffledArray;
   };
 
-  const handleAnimeClick = (index) => {
-    // Define your click handling logic here
-    // For now, let's log the index to the console
-    console.log("Clicked anime index:", index);
+  const handleAnimeClick = (anime) => {
+    setSelectedAnime(anime);
   };
 
-  // Render error message if there's an error
   if (error) {
     return <div>Error fetching data: {error.message}</div>;
   }
@@ -59,20 +55,31 @@ const TopAnime = () => {
     <div>
       <h1>AnimeMania</h1>
       <div id="top-anime-container">
-        {topAnime.length > 0 ? (
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
           topAnime.map((anime, index) => (
             <div key={anime.id || index} className="anime-card">
               <img
                 src={anime.images?.jpg?.image_url}
                 alt={anime.title}
-                onClick={() => handleAnimeClick(index)} // Call handleAnimeClick when clicked
+                onClick={() => handleAnimeClick(anime)}
+                style={{ cursor: "pointer" }}
               />
               <h2>{anime.title}</h2>
-              {/* Rest of your code */}
+              {selectedAnime === anime && (
+                <div>
+                  {/* Display additional details here */}
+                  <p>Status: {anime.status}</p>
+                  <p>Rating: {anime.rating}</p>
+                  <p>Rank: {anime.rank}</p>
+                  <p>Type: {anime.type}</p>
+                  <p>Episodes: {anime.episodes}</p>
+                  <p>{anime.synopsis}</p>
+                </div>
+              )}
             </div>
           ))
-        ) : (
-          <p>Loading...</p>
         )}
       </div>
     </div>

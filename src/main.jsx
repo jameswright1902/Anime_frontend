@@ -10,7 +10,6 @@ import LoginForm from "../src/components/loginform";
 import RegistrationForm from "../src/components/registrationform";
 import "./index.css";
 
-
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>    
       <Router>
