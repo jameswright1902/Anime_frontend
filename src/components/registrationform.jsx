@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 
@@ -30,9 +30,9 @@ function RegistrationForm() {
   };
   
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
+    <div className="container mt-200">
+      {/* <div className="row justify-content-center"> */}
+        <div className="col-md-200">
           <form className="form-horizontal" onSubmit={handleRegistration}>
             <div className="form-group">
               <label htmlFor="username" className="control-label">
@@ -79,7 +79,7 @@ function RegistrationForm() {
           </form>
           {error && <p className="text-danger mt-2">{error}</p>}
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 }
