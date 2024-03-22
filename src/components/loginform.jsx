@@ -12,7 +12,7 @@ function LoginForm() {
     e.preventDefault();
     // Simulate login logic here
     try {
-      const response = await axios.post("http://localhost:3000/login", {
+      const response = await axios.post("https://anime-demo.onrender.com/login", {
         username,
         password,
       });
