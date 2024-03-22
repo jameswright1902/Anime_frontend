@@ -21,7 +21,7 @@ const RecommendationsPage = () => {
   // Function to fetch anime schedules
   async function fetchAnimeSchedules() {
     try {
-      const response = await axios.get("https://anime-demo.onrender.com/schedules");
+      const response = await axios.get(`${import.meta.env.VITE_URL}/schedules`);
       return response.data;
     } catch (error) {
       console.error("Error fetching anime schedules:", error.message);

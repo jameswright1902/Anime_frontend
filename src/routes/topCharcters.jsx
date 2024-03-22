@@ -8,7 +8,7 @@ const TopCharacters = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://anime-demo.onrender.com/top/characters");
+        const response = await axios.get(`${import.meta.env.VITE_URL}/top/characters`);
         const data = response.data.data;
         console.log(data);
         const shuffledCharacters = shuffleArray(data);

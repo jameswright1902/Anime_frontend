@@ -11,7 +11,7 @@ const TopAnime = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("https://anime-demo.onrender.com/top/anime");
+        const response = await axios.get(`${import.meta.env.VITE_URL}/top/anime`);
         console.log("Response data:", response.data.data);
         const shuffledAnime = shuffleArray(response.data.data);
         setTopAnime(shuffledAnime);
